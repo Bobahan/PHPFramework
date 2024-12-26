@@ -45,4 +45,23 @@ class Request
     {
         return $_POST[$name] ?? $default;
     }
+
+    public function getPath(): string
+    {
+        return $this->removeQueryString();
+    }
+
+    // метод который убирает queryString, оставляя при этом только сам path
+    private function removeQueryString(): string
+    {
+        if($this->uri) {
+            $params = explode('?', $this->uri);
+
+            [ $path ] = $params;
+
+            return trim($path, '/');
+        }
+
+        return '';
+    }
 }
