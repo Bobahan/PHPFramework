@@ -7,7 +7,7 @@ const HELPERS = ROOT . "/helpers";
 const CONFIG = ROOT . "/config";
 const CORE = ROOT . "/core";
 const VIEWS = APP . "/Views";
-const COMPONENT = "default";
+const LAYOUT = "default";
 const PATH = "http://localhost:8888";
 
 const DB_SETTINGS = [

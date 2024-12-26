@@ -6,7 +6,7 @@ class HomeController
 {
     public function index()
     {
-        echo 'SIGMA';
+        return view('home', ['name' => 'Alex']);
     }
 
     public function home()

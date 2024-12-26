@@ -8,6 +8,25 @@ function request(): PHPFramework\Request {
     return app()->request;
 }
 
+function response(): PHPFramework\Response {
+    return app()->response;
+}
+
 function router(): PHPFramework\Router {
     return app()->router;
+}
+
+function view($view = '', $data = [], $layout = ''): string|PHPFramework\View {
+    if($view) {
+        return app()->view->render($view, $data, $layout);
+    }
+
+    return app()->view;
+}
+
+function abort($error = '', $code = 404) {
+    response()->setResponseCode($code);
+
+    echo view("errors/$code", ['error' => $error], false);
+    die;
 }
