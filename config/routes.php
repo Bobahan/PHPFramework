@@ -1,13 +1,10 @@
 <?php
 
 use App\Controllers\HomeController;
+use App\Controllers\UserController;
 
-router()->add('/home', [HomeController::class, 'index'], ['get', 'post']);
-router()->add('/alex', [HomeController::class, 'home'], ['get']);
 router()->add('/', [HomeController::class, 'index'], ['get']);
+router()->get('/register', [UserController::class, 'register']);
+router()->post('/register', [UserController::class, 'store']);
+router()->add('/login', [UserController::class, 'login'], ['get', 'post']);
 router()->add('/contacts', [HomeController::class, 'index'], 'post');
-
-// router()->get('/home', [HomeController::class, 'index']);
-// router()->post('/contact', [HomeController::class, 'contact']);
-
-// dd(router()->getRoutes());

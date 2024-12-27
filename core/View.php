@@ -13,7 +13,7 @@ class View
     {
         extract($data);
 
-        $path_to_file = VIEWS . "/$path.php";
+        $path_to_file = VIEWS . "/pages/$path.php";
 
         if(is_file($path_to_file)) {
             ob_start();

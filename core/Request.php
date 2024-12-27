@@ -64,4 +64,16 @@ class Request
 
         return '';
     }
+
+    public function getData(): array
+    {
+        $data = [];
+        $request_data = $this->isPost() ? $_POST : $_GET;
+
+        foreach($request_data as $k => $v) {
+            $data[$k] = trim($v);
+        }
+
+        return $data;
+    }
 }
