@@ -104,3 +104,7 @@ function abort($error = '', $code = 404) {
 function base_url($path = ''): string {
     return PATH . $path;
 }
+
+function check_auth() {
+    return true;
+}

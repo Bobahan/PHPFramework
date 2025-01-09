@@ -31,7 +31,7 @@ class Router
         $this->routes[] = [
             'path' => "/$path",
             'callback' => $callback,
-            'middleware' => '',
+            'middleware' => [],
             'method' => $method,
             'needCsrfToken' => true
         ];
@@ -82,6 +82,18 @@ class Router
                     }
                 }
 
+                if($route['middleware']) {
+                    foreach($route['middleware'] as $m) {
+                        // достаем класс
+                        $middleware = MIDDLEWARES[$m] ?? false;
+
+                        if($middleware) {
+                            // и если данный класс существует то создаем его экземпляр и вызываем метод handle
+                            (new $middleware)->handle();
+                        }
+                    }
+                }
+
                 foreach($matches as $k => $v) {
                     if(is_string($k)) {
                         $this->route_params[$k] = $v;
@@ -104,6 +116,13 @@ class Router
     public function withoutCsrfToken(): self
     {
         $this->routes[array_key_last($this->routes)]['needCsrfToken'] = false;
+
+        return $this;
+    }
+
+    public function middleware(array $middlewares)
+    {
+        $this->routes[array_key_last($this->routes)]['middleware'] = $middlewares;
 
         return $this;
     }
