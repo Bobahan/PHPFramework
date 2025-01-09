@@ -28,6 +28,10 @@ function session(): PHPFramework\Session {
     return app()->session;
 }
 
+function database(): PHPFramework\Database {
+    return app()->database;
+}
+
 function get_alerts() {
     if(!empty($_SESSION)) {
         foreach($_SESSION as $key => $value) {

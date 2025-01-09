@@ -9,6 +9,7 @@ class Application
     public Response $response;
     public View $view;
     public Session $session;
+    public Database $database;
     public static Application $app;
 
     public function __construct()
@@ -18,6 +19,7 @@ class Application
         $this->response = new Response();
         $this->view = new View();
         $this->session = new Session();
+        $this->database = new Database();
         $this->router = new Router($this->request, $this->response);
 
         $this->generateCsrfToken();

@@ -27,6 +27,8 @@ class UserController extends BaseController
             session()->setFlash('success', 'Validation is success');
         }
 
+        $id = $model->save();
+
         response()->redirect('/register');
     }
 
