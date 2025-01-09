@@ -40,4 +40,17 @@ class View
 
         return '';
     }
+    public function renderPartial($view, $data = []): string
+    {
+        extract($data);
+        $page_file = VIEWS . "/incs/$view.php";
+
+        if(is_file($page_file)) {
+            ob_start();
+            require $page_file;
+            return ob_get_clean();
+        } else {
+            return "View file $page_file not found";
+        }
+    }
 }

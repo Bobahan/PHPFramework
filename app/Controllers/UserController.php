@@ -19,11 +19,15 @@ class UserController extends BaseController
 
         $model->loadData();
 
-        if($model->validate()) {
-
+        if(!$model->validate()) {
+            session()->setFlash('error', 'Validation errors');
+            session()->set('form_errors', $model->getErrors());
+            session()->set('form_data', $model->attributes);
+        } else {
+            session()->setFlash('success', 'Validation is success');
         }
 
-        dump($model->getErrors());
+        response()->redirect('/register');
     }
 
     public function login()
