@@ -77,6 +77,14 @@ function get_validation_class($fieldname) {
     return isset($errors[$fieldname]) ? 'is-invalid' : 'is-valid';
 }
 
+function get_csrf_field(): string {
+    return '<input type="hidden" name="csrf_token" value="' . session()->get('csrf_token') . '" />';
+}
+
+function get_csrf_meta(): string {
+    return '<meta name="csrf_token" content="' . session()->get('csrf_token') . '" />';
+}
+
 
 function h(string $str): string {
     return htmlspecialchars($str, ENT_QUOTES);

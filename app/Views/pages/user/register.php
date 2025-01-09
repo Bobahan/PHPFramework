@@ -3,6 +3,7 @@
         <div class="col-md-6 offset-md-3">
             <!-- форма будет отправлена на этот же URL адрес /register -->
             <form action="<?= base_url('/register') ?>" method="post">
+                <?= get_csrf_field(); ?>
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
                     <input type="text" name="name" class="form-control <?= get_validation_class('name') ?>" id="name" placeholder="Name" value="<?= old('name') ?>">

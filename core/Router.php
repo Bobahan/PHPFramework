@@ -33,7 +33,7 @@ class Router
             'callback' => $callback,
             'middleware' => '',
             'method' => $method,
-            'csrf' => true
+            'needCsrfToken' => true
         ];
 
         return $this;
@@ -67,6 +67,21 @@ class Router
     {
         foreach($this->routes as $route) {
             if(preg_match("#^{$route['path']}$#", "/{$path}", $matches) && in_array($this->request->getMethod(), $route['method'])) {
+                if(request()->isPost()) {
+                    if($route['needCsrfToken'] && !$this->checkCsrfToken()) {
+                        if(request()->isAjax()) {
+                            echo json_encode([
+                                'status' => 'error',
+                                'data' => 'Security CSRF error'
+                            ]);
+                            return die;
+                        }
+
+                        session()->setFlash('error', 'Ошибка безопасности CSRF');
+                        response()->redirect();
+                    }
+                }
+
                 foreach($matches as $k => $v) {
                     if(is_string($k)) {
                         $this->route_params[$k] = $v;
@@ -78,5 +93,18 @@ class Router
         }
 
         return false;
+    }
+
+    public function checkCsrfToken(): bool
+    {
+        // проверяем наличие csrf_token в POST запросе и затем сравниваем это значение с тем что хранится в сессии
+        return request()->post('csrf_token') && (request()->post('csrf_token') === session()->get('csrf_token'));
+    }
+
+    public function withoutCsrfToken(): self
+    {
+        $this->routes[array_key_last($this->routes)]['needCsrfToken'] = false;
+
+        return $this;
     }
 }
