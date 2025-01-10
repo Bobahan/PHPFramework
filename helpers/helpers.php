@@ -32,6 +32,10 @@ function database(): PHPFramework\Database {
     return app()->database;
 }
 
+function cache(): PHPFramework\Cache {
+    return app()->cache;
+}
+
 function get_alerts() {
     if(!empty($_SESSION)) {
         foreach($_SESSION as $key => $value) {

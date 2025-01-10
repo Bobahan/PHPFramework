@@ -1,17 +1,14 @@
-a:2:{s:4:"data";s:707:"<ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+a:2:{s:4:"data";s:576:"<ul class="navbar-nav mr-auto mb-2 mb-lg-0">
     <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="http://localhost:8888/home">Home</a>
+        <a class="nav-link active" aria-current="page" href="http://localhost:8888/">Home</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="http://localhost:8888/dashboard">Dashboard</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="http://localhost:8888/register">Register</a>
+        <a class="nav-link" aria-current="page" href="http://localhost:8888/register">zxc</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" aria-current="page" href="http://localhost:8888/login">Login</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="http://localhost:8888/users">Users</a>
+        <a class="nav-link" aria-current="page" href="http://localhost:8888/dashboard">Dashboard</a>
     </li>
-</ul>";s:8:"end_time";i:1735133463;}
+</ul>";s:8:"end_time";i:1736508484;}

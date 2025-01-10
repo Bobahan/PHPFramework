@@ -10,6 +10,7 @@ class Application
     public View $view;
     public Session $session;
     public Database $database;
+    public Cache $cache;
     public static Application $app;
 
     public function __construct()
@@ -20,6 +21,7 @@ class Application
         $this->view = new View();
         $this->session = new Session();
         $this->database = new Database();
+        $this->cache = new Cache();
         $this->router = new Router($this->request, $this->response);
 
         $this->generateCsrfToken();
