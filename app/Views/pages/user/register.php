@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-6 offset-md-3">
             <!-- форма будет отправлена на этот же URL адрес /register -->
-            <form action="<?= base_url('/register') ?>" method="post">
+            <form action="<?= base_url('/register') ?>" method="post" class="ajax-form">
                 <?= get_csrf_field(); ?>
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>

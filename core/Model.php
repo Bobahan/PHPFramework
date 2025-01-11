@@ -15,7 +15,7 @@ class Model
     protected array $rules = [];
     protected array $errors = [];
 
-    public function loadData(): void
+    public function loadData()
     {
         $data = request()->getData();
 
@@ -29,6 +29,8 @@ class Model
                 $this->attributes[$field] = '';
             }
         }
+
+        return $data;
     }
 
     public function save()
@@ -75,5 +77,18 @@ class Model
     public function getErrors(): array
     {
         return $this->errors;
+    }
+
+    public function listErrors()
+    {
+        $output = '<ul class="list-unstyled">';
+        foreach($this->errors as $error) {
+            foreach($error as $e) {
+                $output .= "<li>$e</lig>";
+            }
+        }
+        $output .= "</ul>";
+
+        return $output;
     }
 }

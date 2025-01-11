@@ -10,7 +10,7 @@ class BaseController extends Controller
     {
         // если menu нет в cache мы кладем его в туда
         if(!cache()->get('menu')) {
-            cache()->set('menu', $this->renderMenu(), 20);
+            cache()->set('menu', $this->renderMenu(), 1);
         }
     }
 

@@ -25,6 +25,8 @@ class Application
         $this->router = new Router($this->request, $this->response);
 
         $this->generateCsrfToken();
+
+        Auth::setUser();
     }
 
     public function run()

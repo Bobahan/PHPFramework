@@ -21,4 +21,13 @@ class Response
         header("Location: $redirect");
         die;
     }
+
+    public function json($data, $code = 200)
+    {
+        http_response_code($code);
+        header("Content-type: application/json; charset=UTF-8");
+
+        // данные преобразуем в JSON
+        exit(json_encode($data));
+    }
 }

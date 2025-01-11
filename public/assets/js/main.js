@@ -30,6 +30,9 @@ $(function () {
                 res = JSON.parse(res);
                 console.log(res);
             },
+            complete: function () {
+                btn.prop('disabled', false);
+            },
             error: function () {
                 alert('Error!');
                 btn.prop('disabled', false).text(btnText);

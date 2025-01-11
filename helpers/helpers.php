@@ -110,5 +110,9 @@ function base_url($path = ''): string {
 }
 
 function check_auth() {
-    return true;
+    return \PHPFramework\Auth::isAuth();
+}
+
+function get_user() {
+    return \PHPFramework\Auth::user();
 }
